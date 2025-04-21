@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .mycontainer {
+            display: flex;
+            width:90%;
+            margin-left: 8%;
+            margin-right: 15%;
+            border-radius: 10px;
+            
+        }
+
+        .mycontainer>div {
+            width: 25%;
+            margin:40px;
+            padding-left:25px;
+            border: 2px solid darkgreen;
+            background-color: lightblue;
+            border-radius: 10px;
+        }
+
+        .body {
+            background-color: lightyellow;
+            
+        }
+
+ 
+        .h1 {
+            text-align: center;
+            color: darkred;
+            font-size: 36px;
+            padding: 20px 0 20px 0;
+            margin: 10px;
+            border: 3px solid #dee0e4;
+            background-color: rgb(174, 212, 174);
+            border-radius: 10px;
+        }
+
+        .h2 {
+            text-align: center;
+            background-color: rgb(209, 209, 178);
+            color: #5b6574;
+            font-size: 24px;
+            color: darkred;
+            padding: 10px;
+            margin-left: px;
+            border: 1px solid #e2dee4;
+            width:400px;
+            border-radius: 10px;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;                
+                color:lightyellow;
+                text-align: left;
+                text-decoration: none;
+                border-radius: 5px;
+                height:60px;
+                width:350px;
+                background-color: lightyellow;
+            }
+            .button:hover {
+                background-color: lightgreen;
+            }
+            .texto {
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            color: black;
+            
+            
+
+            
+        }
+     </style>
+</head>
+
+<body class="body">
+
+    <div>
+        <h1 class="h1" style="font-size:48px">interOsprera<br></h1><h1 class="h1" > Opciones habilitadas para: {{ xDocumento }} - {{ xNombre }}
+        <button class="button texto" id='Cierra' onclick="location.href='/';"
+        style=" width:100px; float: right; margin-right: 50px;height:50px;"><b>Cierra</b></button>
+        </h1>
+    </div>
+
+
+    <div class="mycontainer">
+
+        <script>
+            var jsIdentidad = "{{ xIdentidad }}";
+            var jsTarea004  = "{{ xTarea004 }}";
+            var jsTarea102  = "{{ xTarea102 }}";
+        </script>
+
+        <div style="display:none" id="datosgenerales"> 
+            
+           
+            <div >
+                <h2 class="h2" id="MantenimientoDatosGenerales" style="display:none">Mantenimiento de Datos Generales</h2>
+                <script>
+                    if  ( jsIdentidad == 1 )
+                    var intro = document.getElementById('MantenimientoDatosGenerales');
+                        intro.style.display = 'block'; 
+                </script>
+                <ul >                   
+                <button class="button texto" id='UsuariosTareas' onclick="location.href='http://boletas.intersistemas.net:98/app/dinter';"
+                 style="display:none"><b>Usuarios y sus Tareas</b></button>
+                <script>
+                    
+                    if  ( jsIdentidad == 1 )
+                    var intro = document.getElementById('UsuariosTareas');
+                        intro.style.display = 'block';       
+                    
+                </script>
+            </ul>
+            <ul >          
+                <button class="button texto" id="genericas"   style="display:none" onclick="location.href='http://boletas.intersistemas.net:98/app/dinter'">
+                    <b>Tablas Genéricas</b></button>
+                
+                <script>
+                    if  ( jsIdentidad == 1 && jsTarea004 == 1){
+                    var intro = document.getElementById('genericas');
+                        intro.style.display = 'block'; 
+                    }      
+                </script>
+            </ul>
+            </div>
+            <script>
+                    
+                if  ( jsIdentidad == 1 && (jsTarea004 == 1 || jsTarea102 == 1))
+                var intro = document.getElementById('datosgenerales');
+                    intro.style.display = 'block';       
+            </script>
+        </div>
+
+        <div style="display:none" id="gsb">
+            <div>
+                <h2 class="h2">Operativo GSB</h2>
+            </div>
+        <ul >          
+            <button class="button texto"   id= "dinter" style="display:none" onclick="location.href='http://boletas.intersistemas.net:98/app/AfiBoletas';">
+                <b>Emisión de Boletas</b></button>
+                <script>
+                
+                    var intro = document.getElementById('dinter');
+                        intro.style.display = 'block';       
+                </script>
+        </ul>
+        
+        
+        <script> 
+            if ( jsIdentidad == 1){
+            var intro = document.getElementById('gsb');
+            intro.style.display = 'block';   
+        }  
+        </script>
+        </div>   
+    </div>
+        <div style="display:none"><div ><h2 class="h2" >Otras Opciones</h2></div>
+        <ul >          
+            <button class="button texto"   id= "otras" style="display:none" onclick="location.href='http://boletas.intersistemas.net:98/app/AfiBoletas';">
+                <b>NO Definido</b></button>
+            </li>
+            <script>
+                var intro = document.getElementById('otras');
+                    intro.style.display = 'none';       
+            </script>
+        </ul>
+      
+
+       </div>
+
+    </div>
+    <div>
+        <h2 class="h2" style="width:97%;margin-left:10px">{{ xAvance }}</h2>
+ 
+    </div>   
+
+</body>
+
+</html>
