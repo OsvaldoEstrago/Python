@@ -64,8 +64,6 @@ pytweening==1.2.0
 pytz==2023.3.post1
 PyYAML==6.0.2
 redis==4.6.0
-reflex==0.3.9
-reflex-hosting-cli==0.1.6
 requests==2.31.0
 rich==13.7.0
 setuptools==69.0.3
